@@ -82,6 +82,7 @@ function draw() {
     spheres[i].applyForce(gravity);
     spheres[i].update();
     spheres[i].display();
+    spheres[i].checkEdges();
   }
 
   // Title
@@ -200,4 +201,11 @@ Sphere.prototype.display = function() {
   noStroke();
   fill(56, 156, 237,transparency);
   ellipse(this.position.x,this.position.y,this.mass*16,this.mass*16);
+};
+
+Sphere.prototype.checkEdges = function() {
+  if (this.position.y < this.mass*8) {
+    console.log("bye");
+    spheres.shift();
+  }
 };
